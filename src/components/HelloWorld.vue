@@ -12,6 +12,7 @@ interface Person {
   name: string
   age: number
 }
+
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string
@@ -21,6 +22,12 @@ export default class HelloWorld extends Vue {
     name: '111',
     age: 111
   }
+  public persons: Person[] | null = [
+    {
+      name: 'uzi',
+      age: 12
+    }
+  ]
   onClick(): void {
     this.age += 1
     this.tom.age = this.age
@@ -28,7 +35,8 @@ export default class HelloWorld extends Vue {
   created() {
     console.log('====================================')
     this.onClick()
-    console.log(this.age)
+    console.log(this.age, this.persons)
+    this.persons = null
     console.log('====================================')
   }
 
